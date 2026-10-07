@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="inventory_dashboard.InventoryDashboard" owl="1">
+        <t t-log="'INCOMING STOCK FROM UI: ',this.state.incoming"/>
+        <div class="vh-100 overflow-auto bg-muted">
+            <div class="row m-3">
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h1 class="text-primary fw-bold">
+                                        Inventory Dashboard
+                                    </h1>
+                                    <div>
+                                        <div class="card-100">
+                                            <div class="card-title">
+                                                <span>
+                                                    <i class="fa fa-filter"/>
+                                                    Filter
+                                                </span>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="pb-1">
+                                                    <select class="form-select" t-model="state.period"
+                                                            t-on-change="onChangePeriod">
+                                                        <option value="0">None</option>
+                                                        <option value="1">Week</option>
+                                                        <option value="2">Month</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <t t-if="state.period == 1">
+                                                        <select class="form-select" t-model="state.week" t-on-change="onChangeWeek">
+                                                            <option value="1">Week 1</option>
+                                                            <option value="2">Week 2</option>
+                                                            <option value="3">Week 3</option>
+                                                            <option value="4">Week 4</option>
+                                                        </select>
+                                                    </t>
+
+
+                                                    <t t-if="state.period == 2 || state.period == 1">
+                                                        <select class="form-select" t-model="state.month" t-on-change="onChangeMonth">
+                                                            <option value="1">January</option>
+                                                            <option value="2">February</option>
+                                                            <option value="3">March</option>
+                                                            <option value="4">April</option>
+                                                            <option value="5">May</option>
+                                                            <option value="6">June</option>
+                                                            <option value="7">July</option>
+                                                            <option value="8">August</option>
+                                                            <option value="9">September</option>
+                                                            <option value="10">October</option>
+                                                            <option value="11">November</option>
+                                                            <option value="12">December</option>
+                                                        </select>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 m-0 p-0 cursor-pointer" t-on-click="viewIncoming">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="h1 fw-bold text-dark" style="font-size: 48px">
+                                    <span t-esc="state.incomingTotal"/>
+                                </div>
+                                <div class="h3 text-muted">Incoming Stock</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 m-0 p-0 cursor-pointer" t-on-click="viewOutgoing">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="h1 fw-bold text-dark" style="font-size: 48px">
+                                    <span t-esc="state.outgoingTotal"/>
+                                </div>
+                                <div class="h3 text-muted">Outgoing Stock</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 m-0 p-0 cursor-pointer" t-on-click="viewInternal">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="h1 fw-bold text-dark" style="font-size: 48px">
+                                    <span t-esc="state.internalTotal"/>
+                                </div>
+                                <div class="h3 text-muted">Internal Transfers</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="h1 fw-bold text-dark" style="font-size: 48px">$ 0.00</div>
+                                <div class="h3 text-muted">Inventory Valuation</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h3 class="text-primary fw-bold">
+                                        Location-wise Stock
+                                    </h3>
+                                    <div class="px-3 py-1 bg-primary cursor-pointer" t-on-click="viewLocations">
+                                        <span class="fa fa-arrow-right text-white"/>
+                                    </div>
+                                </div>
+                                <canvas t-ref="chart_location_wise"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h3 class="text-primary fw-bold">
+                                        Warehouse Locations
+                                    </h3>
+                                    <div class="px-3 py-1 bg-primary cursor-pointer" t-on-click="viewWarehouses">
+                                        <span class="fa fa-arrow-right text-white"/>
+                                    </div>
+                                </div>
+                                <table t-if="state.warehouse" class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Warehouse</th>
+                                            <th>Locations</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="state.warehouse" t-as="rec" t-key="rec_index">
+                                            <td>
+                                                <span t-esc="rec.warehouse"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="rec.location"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+<!--                                <canvas t-ref="chart_warehouse"/>-->
+                            </div>
+                        </div>
+                        <!--                        <div class="col-lg-6 m-0 p-0">-->
+                        <!--                            <div class="shadow-sm border m-2 p-4 bg-white">-->
+                        <!--                                <div class="d-flex align-items-center justify-content-between">-->
+                        <!--                                    <h3 class="text-primary fw-bold">-->
+                        <!--                                        Location-wise Stock-->
+                        <!--                                    </h3>-->
+                        <!--                                    <div class="px-3 py-1 bg-primary cursor-pointer">-->
+                        <!--                                        <span class="fa fa-arrow text-white"/>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            <canvas t-ref="chart_location_wise"/>-->
+                        <!--                        </div>-->
+
+                        <!--                        <div class="col-lg-6 m-0 p-0">-->
+                        <!--                            <div class="shadow-sm border m-2 p-4 bg-white">-->
+                        <!--                                <div class="d-flex align-items-center justify-content-between">-->
+                        <!--                                    <h3 class="text-primary fw-bold">-->
+                        <!--                                        Internal Transfer-->
+                        <!--                                    </h3>-->
+                        <!--                                    <div class="px-3 py-1 bg-primary cursor-pointer">-->
+                        <!--                                        <span class="fa fa-arrow text-bold-white"/>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="col m-0 p-0">
+                        <div class="shadow-sm border m-2 p-4 bg-white">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h3 class="text-primary fw-bold">
+                                    Incoming Stock
+                                </h3>
+                                <div class="px-3 py-1 bg-primary cursor-pointer" t-on-click="viewReceipts">
+                                    <span class="fa fa-arrow-right text-white"/>
+                                </div>
+                            </div>
+                            <canvas t-ref="chart_incoming"/>
+                        </div>
+                    </div>
+                    <div class="col m-0 p-0">
+                        <div class="shadow-sm border m-2 p-4 bg-white">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h3 class="text-primary fw-bold">
+                                    Outgoing Stock
+                                </h3>
+                                <div class="px-3 py-1 bg-primary cursor-pointer" t-on-click="viewDeliveries">
+                                    <span class="fa fa-arrow-right text-white"/>
+                                </div>
+                            </div>
+                            <canvas t-ref="chart_outgoing"/>
+                        </div>
+                    </div>
+                    <div class="col m-0 p-0">
+                        <div class="shadow-sm border m-2 p-4 bg-white">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h3 class="text-primary fw-bold">
+                                    Internal Transfer
+                                </h3>
+                                <div class="px-3 py-1 bg-primary cursor-pointer" t-on-click="viewInternalTransfer">
+                                    <span class="fa fa-arrow-right text-white"/>
+                                </div>
+                            </div>
+                            <canvas t-ref="chart_internal"/>
+<!--                            <t t-if="state.internal.length != 0">-->
+<!--                                <canvas t-ref="chart_internal"/>-->
+<!--                            </t>-->
+<!--                            <canvas t-if="state.internal.length != 0" t-ref="chart_internal"/>-->
+                            <div t-if="state.internal.length == 0">
+                                <i><b>No Internal Transfer Data for this user</b></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

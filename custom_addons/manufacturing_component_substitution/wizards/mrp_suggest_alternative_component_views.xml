@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mrp_suggest_alternative_component_view_form" model="ir.ui.view">
+        <field name="name">mrp.suggest.alternative.component.view.form</field>
+        <field name="model">mrp.suggest.alternative.component</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="unavailable_component_ids">
+                    <list editable="bottom">
+                        <field name="name"/>
+                        <field name="alternate_component_id" domain="[('id','in',alternate_component_ids),('qty_available','>',0)]"/>
+                    </list>
+                </field>
+                <footer>
+                    <button name="add_component" type="object" string="Add Components" class="btn btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

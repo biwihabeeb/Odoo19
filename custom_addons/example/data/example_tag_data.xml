@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="model_example_tag_1" model="example.tag">
+        <field name="name">one</field>
+
+    </record>
+
+    <record id="model_example_tag_2" model="example.tag">
+        <field name="name">two</field>
+
+    </record>
+
+    <record id="model_example_tag_3" model="example.tag">
+        <field name="name">three</field>
+    </record>
+
+</odoo>

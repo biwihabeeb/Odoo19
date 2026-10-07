@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="stock_picking_internal_remark_field_in_report" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@class='page']" position="before">
+            <t t-if="o.internal_remarks != False">
+                <p>
+                    <strong>Internal Remarks: </strong>
+                    <span t-field="o.internal_remarks"/>
+                </p>
+            </t>
+        </xpath>
+    </template>
+</odoo>

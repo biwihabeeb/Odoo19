@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_library_mgmt_checkout_lines" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">library.checkoutlines</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="checkout_lines_view_list" model="ir.ui.view">
+        <field name="name">library.checkout.lines.view.list</field>
+        <field name="model">library.checkoutlines</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="checkout_status == 'overdue'">
+                <field name="book_title"/>
+                <field name="checkout_name"/>
+                <field name="checkout_date"/>
+                <field name="return_date"/>
+                <field name="if_late"/>
+                <field name="checkout_penalty"/>
+            </list>
+        </field>
+    </record>
+</odoo>

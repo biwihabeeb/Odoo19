@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_employee_view_form_is_available_technician" model="ir.ui.view">
+        <field name="name">hr.employee.view.form.is.available.technician</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@string='work']" postition="inside">
+                <field name="is_available_technician"/>
+                <field name="vehicle_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

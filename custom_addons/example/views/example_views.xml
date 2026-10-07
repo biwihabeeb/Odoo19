@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="example_form_view" model="ir.ui.view">
+        <field name="name">Example Form View</field>
+        <field name="model">example</field>
+        <field name="arch" type="xml">
+            <form>
+                <button type="object" name="action_test" string="test" class="btn oe_highlight"/>
+                <sheet>
+                    <group>
+                         <field name="name"/>
+                    <field name="tags_ids" widget="many2many_tags"/>
+                    <field name="partner_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Lines">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price"/>
+                                    <field name="sub_total"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="example_list_view" model="ir.ui.view">
+        <field name="name">Example list view</field>
+        <field name="model">example</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="tags_ids" width="85px"/>
+                <field name="line_ids" width="85px"/>
+                <field name="partner_id" width="85px"/>
+
+            </list>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_mrp_production_ext" model="ir.actions.act_window">
+        <field name="name">MRP Order</field>
+        <field name="res_model">mrp.production.ext</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="mrp_product_ext_form_view" model="ir.ui.view">
+        <field name="name">mrp.product.ext.form.view</field>
+        <field name="model">mrp.production.ext</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,in_progress,done,cancel"/>
+                    <button name="action_confirm_mrp" type="object" string="Confirm" class="btn btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_mrp_set_to_draft" type="object" string="Set to Draft"  invisible="state != 'cancel'"/>
+                    <button name="action_mrp_cancel" type="object" string="Cancel"/>
+                    <button name="action_mrp_start_production" type="object" string="Start Production" class="btn btn-primary" invisible="state != 'confirmed'"/>
+                    <button name="action_mrp_complete_production" type="object" string="Complete" class="btn btn-primary" invisible="state != 'in_progress'"/>
+                    <button name="action_consume_material" type="object" string="Consume Materials" class="btn btn-primary" invisible="state != 'in_progress'"/>
+
+                </header>
+                <sheet>
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="bom_id"/>
+                        <field name="quantity"/>
+                        <field name="planned_date"/>
+<!--                        <field name=""/>-->
+                    </group>
+                    <notebook>
+                        <page name="mrp_material_lines" string="Materials">
+                            <field name="material_line_ids">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="required_qty"/>
+                                    <field name="available_qty"/>
+                                    <field name="is_material_available"/>
+                                    <field name="consumed_qty"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="mrp_product_ext_list_view" model="ir.ui.view">
+        <field name="name">mrp.product.ext.list.view</field>
+        <field name="model">mrp.production.ext</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="product_id"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>

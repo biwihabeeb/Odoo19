@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="purchase_order_view_allowed_vendor_categories" model="ir.ui.view">
+        <field name="name">purchase.order.view.allowed.vendor.categories</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='justification']" position="after">
+                <field name="allowed_tag_ids" widget="many2many_tags" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="purchase_order_form_view_filter_vendors_on_tags" model="ir.ui.view">
+        <field name="name">purchase.order.form.view.filter.vendor.on.tags</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="domain">
+                    ['|', ('company_id', '=', False), ('company_id', '=',company_id), ('category_id','in',allowed_tag_ids)]
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

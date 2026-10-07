@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_example_root" name="Example Module"/>
+
+
+    <record id="action_example" model="ir.actions.act_window">
+        <field name="name">Example</field>
+        <field name="res_model">example</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_example" name="Example " parent="example.menu_example_root" action="example.action_example"/>
+
+
+    <record id="action_tag" model="ir.actions.act_window">
+        <field name="name">Example Tag</field>
+        <field name="res_model">example.tag</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <menuitem id="menu_example_tag" name="Tag" parent="example.menu_example_root" action="example.action_tag"/>
+    <record id="action_example_lines" model="ir.actions.act_window">
+        <field name="name">Example Line</field>
+        <field name="res_model">example.line</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <menuitem id="menu_example_line" name="Example Line" parent="example.menu_example_root" action="example.action_example_lines"/>
+
+
+</odoo>

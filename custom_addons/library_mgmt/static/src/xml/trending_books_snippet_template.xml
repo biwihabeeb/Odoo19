@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="library_mgmt.trending_books_snippet_carousel_template">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h3>Trending Books</h3>
+                </div>
+                <div class="col-6 text-right">
+                    <a t-attf-href="#trending_book_carousel" class="carousel-control-prev" data-bs-slide="prev"
+                       role="button"
+                       aria-label="Previous" title="Previous">
+                        <span class="fa fa-chevron-circle-left fa-2x" style="color: #000000;"/>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a t-attf-href="#trending_book_carousel" class="carousel-control-next" data-bs-slide="next"
+                       role="button"
+                       aria-label="Next" title="Next">
+                        <span class="fa fa-chevron-circle-right fa-2x" style="color: #000000;"/>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <div id="trending_book_carousel" name="trendingBooks" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <t t-foreach="chunkData" t-as="data" t-key="data_index">
+                                <div t-att-class="data.is_active ? 'carousel-item active' : 'carousel-item'">
+<!--                                    class="carousel-item active"-->
+                                    <div class="row" style="display: flex; flex-wrap: nowrap; width: 100%;">
+                                        <t t-foreach="data" t-as="book" t-key="book_index">
+<!--                                            <div t-att-style="'flex: 0.0' + maxWidth + '%; max-width: ' + maxWidth + '%; padding: 0 8px; box-sizing: border-box;'">-->
+<!--                                                -->
+<!--                                            </div>-->
+                                            <div class="col-md-4 mb-3" t-attf-style="flex: 0.0 {{ maxWidth }}%; max-width: {{ maxWidth }}%; padding: 0 8px; box-sizing: border-box;">
+                                                <div class="card h-100" style="overflow: hidden;">
+                                                    <div style="width: 100%; height: 250px; overflow: hidden;">
+                                                         <img alt="BOOK COVER IMAGE"
+                                                              t-attf-src="data:image/jpeg;base64,{{book.book_cover}}"
+                                                              t-if="book.book_cover"
+                                                              class="image-fluid"
+                                                              style="width: 100%; height: 100% object-fit: cover; display:block;"
+                                                         />
+                                                        <img alt="BOOK COVER IMAGE"
+                                                             t-if="book.book_cover = False"
+                                                             t-attf-src="library_mgmt/static/src/img/noun-book-1069597.svg"
+                                                             style="width: 100%; height: 100% object-fit: cover; display:block;"
+                                                        />
+                                                    </div>
+
+                                                    <div class="card-body">
+                                                        <t t-log="'MAX WIDTH :',maxWidth"/>
+                                                        <a class="stretched-link"
+                                                           t-attf-href="/my/book_donations/{{book.id}}">
+                                                            <h4 class="card-title" t-esc="book.book_title"/>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

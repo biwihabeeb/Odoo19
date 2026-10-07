@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_library_mgmt_book" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">library.books</field>
+        <field name="view_mode">list,form,search</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your records</p>
+        </field>
+    </record>
+
+    <!--  List View  -->
+    <record id="book_view_list" model="ir.ui.view">
+        <field name="name">library.books.list</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="book_status == 'unavailable'" decoration-success="book_status == 'available'" decoration-info="book_status == 'coming_soon'">
+                <field name="name" />
+                <field name="book_title"/>
+                <field name="book_author_id"/>
+                <field name="book_status"/>
+                <field name="book_borrow_count"/>
+            </list>
+        </field>
+    </record>
+
+<!--    Form View -->
+    <record id="book_view_form" model="ir.ui.view">
+        <field name="name">library.books.form</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="book_status" widget="statusbar" statusbar_visible="available,unavailable,coming_soon"/>
+                    <button name="action_make_available" class="btn-primary" type="object" string="Make Available" invisible="book_status != 'coming_soon'"/>
+                </header>
+                <sheet>
+                    <field name="book_cover" widget="image" height="90" width="90" style="max-width:90px;max-height:90px" class="oe_avatar" />
+                    <h2><field name="name">Name</field></h2>
+                    <group>
+                        <field name="book_title">Book Title</field>
+                        <field name="book_isbn" />
+                        <field name="book_author_id" />
+                        <field name="book_language_id"/>
+                        <field name="book_price" />
+                        <field name="book_publisher_id" />
+                        <field name="book_genre_ids" widget="many2many_tags"/>
+                        <field name="book_cost" />
+                        <field name="book_status"/>
+                        <field name="book_borrow_count"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    Search Views -->
+    <record id="book_view_search" model="ir.ui.view">
+        <field name="name">library.books.search</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="book_title" string="Title"/>
+                <field name="book_author_id" string="Author"/>
+                <field name="book_genre_ids" string="Genre"/>
+                <field name="book_isbn" string="ISBN"/>
+                <field name="book_publisher_id" string="Publication"/>
+                <group name="group_by">
+                    <filter name="group_by_author" string="Author" context="{'group_by':'book_author_id'}"/>
+                    <filter name="group_by_genre" string="Genre" context="{'group_by':'book_genre_ids'}"/>
+                    <filter name="group_by_publisher" string="Publisher" context="{'group_by':'book_publisher_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

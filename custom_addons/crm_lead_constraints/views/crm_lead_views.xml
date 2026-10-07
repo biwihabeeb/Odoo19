@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="crm_lead_form_view_field_meeting_count" model="ir.ui.view">
+        <field name="name">crm.lead.form.view.field.meeting.count</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="meeting_count" string="No. of Completed Meetings"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

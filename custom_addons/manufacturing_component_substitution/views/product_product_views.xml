@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_product_form_view_field_alternate_components" model="ir.ui.view">
+        <field name="name">product.product.form.view.field.alternate.components</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_general']" position="inside">
+                <field name="alternate_component_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

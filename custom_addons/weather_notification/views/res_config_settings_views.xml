@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settiings_weather_notification_region" model="ir.ui.view">
+        <field name="name">res.config.settiings.weather.notification.region</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/app[@name='general_settings']" position="inside">
+                <div id="weather_notification">
+                    <block title="Weather Notification" name="weather_notification_container">
+                        <group name="weather_config">
+                            <setting id="select_weather_config" help="Choose region to configure weather notifications">
+                                <field name="weather_config"/>
+                            </setting>
+                        </group>
+
+                        <group name="set_lat_long_loc">
+                            <setting id="select_region" invisible="weather_config != 'loc'">
+                                <field name="region"/>
+                            </setting>
+                            <setting id="set_lat" invisible="weather_config != 'lat_long'">
+                                <field name="latitude"/>
+                            </setting>
+                            <setting id="set_long" invisible="weather_config != 'lat_long'">
+                                <field name="longitude"/>
+                            </setting>
+
+                        </group>
+
+                    </block>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

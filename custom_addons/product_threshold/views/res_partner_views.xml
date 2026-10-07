@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_partner_form_view_field_product_ids" model="ir.ui.view">
+        <field name="name">res.partner.form.view.field.product.ids</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="after">
+                <div class="o_row">
+                    <group>
+                        <field name="product_ids" widget="many2many_tags" string="Products"/>
+                        <button name="action_recalculate"
+                                type="object"
+                                class="btn-link mb-1 px-0" icon="fa-refresh"
+                                string="Recalculate"
+                        />
+                        <button name="action_add_to_so"
+                                type="object"
+                                class="btn-link mb-1 px-0" icon="fa-plus"
+                                string="Add to SO"
+                        />
+                    </group>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

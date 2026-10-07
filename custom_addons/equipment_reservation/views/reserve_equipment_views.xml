@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_reserve_equipment" model="ir.actions.act_window">
+        <field name="name">Equipment Reservation</field>
+        <field name="res_model">reserve.equipment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="reserve_equipment_view_list" model="ir.ui.view">
+        <field name="name">reserve.equipment.view.list</field>
+        <field name="model">reserve.equipment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="reserve_equipment_view_form" model="ir.ui.view">
+        <field name="name">reserve.equipment.view.form</field>
+        <field name="model">reserve.equipment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,approved,using,returned,cancel"/>
+                    <button name="action_approve_equipment" type="object" class="btn-primary" string="Approve" invisible="status != 'draft'" groups="equipment_reservation.group_reservation_manager"/>
+                    <button name="action_start_equipment_use" type="object" class="btn-primary" string="Start Use" invisible="status != 'approved'"/>
+                    <button name="action_return_equipment" type="object" class="btn-primary" string="Return Equipment" invisible="status != 'using'"/>
+                    <button name="action_cancel_request" type="object" string="Cancel" invisible="status == 'cancel'"/>
+                    <button name="action_set_to_draft" type="object" string="Set to Draft" invisible="status != 'cancel'"/>
+
+                </header>
+                <sheet>
+                    <h3><field name="name"/> </h3>
+                    <group>
+                        <group name="employee_details">
+                            <field name="employee_id"/>
+                        </group>
+                        <group name="reservation_details">
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="purpose"/>
+                        </group>
+                        <notebook>
+                            <page string="Add Equipments">
+                                <field name="equipment_line_ids">
+                                    <list editable="bottom">
+                                        <field name="equipment_id"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

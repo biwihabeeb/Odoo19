@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="stock_location_heavy_rack" model="stock.location">
+        <field name="name">Heavy Rack</field>
+        <field name="usage">internal</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+    </record>
+
+    <record id="storage_category_heavy" model="stock.storage.category">
+        <field name="name">Heavy</field>
+        <field name="max_weight">5000</field>
+    </record>
+</odoo>

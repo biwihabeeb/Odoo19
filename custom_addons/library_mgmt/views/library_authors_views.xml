@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_library_mgmt_author" model="ir.actions.act_window">
+        <field name="name">Authors</field>
+        <field name="res_model">library.authors</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your records</p>
+        </field>
+    </record>
+
+<!--  List View  -->
+    <record id="author_view_list" model="ir.ui.view">
+        <field name="name">library.authors.list</field>
+        <field name="model">library.authors</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="author_books_ids" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+<!--    Form View -->
+    <record id="author_view_form" model="ir.ui.view">
+        <field name="name">library.authors.form</field>
+        <field name="model">library.authors</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name" />
+                    <field name="author_books_ids" />
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

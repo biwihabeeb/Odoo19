@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_library_mgmt_members" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="max_borrow_count_field_view" model="ir.ui.view">
+        <field name="name">max.borrow.count.field.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="max_borrow_count"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="member_book_checkouts_view" model="ir.ui.view">
+        <field name="name">member.book.checkouts.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_book_checkouts" type="object" class="oe_stat_button" string="Checkouts" icon="fa-book">
+                    <field name="borrow_count" widget="statinfo" string="Books Borrowed"/>
+                </button>
+                <button name="penalty_amount_view" type="object" class="oe_stat_button" icon="fa-dollar">
+                    <field name="sum_penalty" widget="statinfo" string="Fine Due"/>
+                </button>
+                <button name="action_view_late_returns" type="object" class="oe_stat_button" icon="fa-hourglass">
+                    <field name="count_late_returns" widget="statinfo" string="Late Returns"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="employee_loan_root" name="Employee Loan Management"/>
+
+    <menuitem id="employee_loan_mgmt_menu" name="Loan" parent="loan_mgmt.employee_loan_root"/>
+
+    <menuitem id="employee_loan_menu_item" name="Employee Loan" parent="loan_mgmt.employee_loan_mgmt_menu" action="action_employee_loan"/>
+    <menuitem id="employee_loan_line_menu_item" name="Employee Loan Lines" parent="loan_mgmt.employee_loan_mgmt_menu" action="action_emploeyee_loan_line_view"/>
+
+</odoo>

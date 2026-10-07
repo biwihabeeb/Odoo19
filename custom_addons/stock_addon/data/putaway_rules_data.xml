@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="putaway_rule_for_product_weight" model="stock.putaway.rule">
+        <field name="location_in_id" model="stock.location" ref="stock.stock_location_stock"/>
+        <field name="location_out_id" model="stock.location" ref="stock.sock_location_heavy_rack"/>
+    </record>
+</odoo>

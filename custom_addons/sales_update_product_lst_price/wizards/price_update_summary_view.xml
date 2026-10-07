@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="price_update_summary_view" model="ir.ui.view">
+        <field name="name">price.update.summary.view</field>
+        <field name="model">updated.price.summary</field>
+<!--        <field name="view_mode">form</field>-->
+        <field name="arch" type="xml">
+            <form>
+                <field name="updated_product_ids">
+                    <list>
+                        <field name="product_id"/>
+                        <field name="current_price" string="Price Before"/>
+                        <field name="new_price" string="Updated Price"/>
+                    </list>
+                </field>
+            </form>
+        </field>
+    </record>
+</odoo>

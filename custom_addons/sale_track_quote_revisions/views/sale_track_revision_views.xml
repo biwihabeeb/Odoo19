@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_track_revision_view_list" model="ir.ui.view">
+        <field name="name">sale.track.revision.view.list</field>
+        <field name="model">sale.track.revision</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="create_date"/>
+                <field name="notes"/>
+            </list>
+        </field>
+    </record>
+</odoo>

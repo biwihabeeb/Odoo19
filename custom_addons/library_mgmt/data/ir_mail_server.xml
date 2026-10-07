@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="ir_mail_server_outgoing" model="ir.mail_server">
+        <field name="name">Outgoing Server</field>
+        <field name="smtp_encryption">ssl</field>
+        <field name="smtp_host">smtp.gmail.com</field>
+        <field name="smtp_user">odoouser6@gmail.com</field>
+        <field name="smtp_pass">xjem rppp tksw xzbd</field>
+        <field name="smtp_port">465</field>
+    </record>
+</odoo>

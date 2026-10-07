@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_fleet_service_order_part" model="ir.actions.act_window">
+        <field name="name">Parts</field>
+        <field name="res_model">fleet.service.order.part</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your records</p>
+        </field>
+    </record>
+
+    <record id="fleet_service_order_part_view_list" model="ir.ui.view">
+        <field name="name">fleet.service.order.part.view.list</field>
+        <field name="model">fleet.service.order.part</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="order_id"/>
+                <field name="product_id"/>
+                <field name="quantity"/>
+                <field name="unit_price"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="fleet_service_order_part_view_form" model="ir.ui.view">
+        <field name="name">fleet.service.order.part.view.form</field>
+        <field name="model">fleet.service.order.part</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+<!--                    <h2>-->
+<!--                        <field name="name">Name</field>-->
+<!--                    </h2>-->
+                    <group>
+                        <field name="order_id"/>
+                        <field name="product_id"/>
+                        <field name="quantity"/>
+                        <field name="unit_price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="crm_dashboard.CrmDashboard" owl="1">
+        <div class="vh-100 overflow-auto bg-muted">
+            <div class="row m-3">
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h1 class="text-primary fw-bold">
+                                        CRM Dashboard
+                                    </h1>
+                                    <div>
+                                        <div class="card-100">
+                                            <div class="card-title">
+                                                <span>
+                                                    <i class="fa fa-filter">
+                                                        Filter
+                                                    </i>
+                                                </span>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="pb-1">
+                                                    <select class="form-select">
+                                                        <option value="0">This Year</option>
+                                                        <option value="1">This Quarter</option>
+                                                        <option value="2">This Month</option>
+                                                        <option value="3">This Week</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 m-0 p-0 cursor-pointer">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="h1 fw-bold text-dark" style="font-size: 48px;">
+                                    <span t-esc="state.leads"/>
+                                </div>
+                                <div class="h3 text-muted">My Leads</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 m-0 p-0 cursor-pointer">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="h1 fw-bold text-dark" style="font-size: 48px;">
+                                    <span t-esc="state.opportunities"/>
+                                </div>
+                                <div class="h3 text-muted">My Opportunities</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 m-0 p-0 cursor-pointer">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="h1 fw-bold text-dark" style="font-size: 48px;">
+                                    <span><span t-esc="state.revenueExpect"/></span>
+                                </div>
+                                <div class="h3 text-muted">Expected Revenue</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 m-0 p-0 cursor-pointer">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="h1 fw-bold text-dark" style="font-size: 48px;">
+                                    <span t-esc="state.revenueEarned"/>
+                                </div>
+                                <div class="h3 text-muted">Revenue</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 m-0 p-0 cursor-pointer">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="h1 fw-bold text-dark" style="font-size: 48px;">
+                                    <span t-esc="state.winRatio"/> %
+                                </div>
+                                <div class="h3 text-muted">Win Ratio</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-1">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h3 class="text-primary fw-bold">
+                                        Lost Opportunity/Leads
+                                    </h3>
+                                    <div class="px-3 py-1 bg-primary cursor-pointer">
+                                        <span class="fa fa-arrow-right text-white"/>
+                                    </div>
+                                </div>
+                                <canvas t-ref="chart_lost_leads"/>
+                            </div>
+                        </div>
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h3 class="text-primary fw-bold">
+                                        Activities
+                                    </h3>
+                                    <div class="px-3 py-1 bg-primary cursor-pointer">
+                                        <span class="fa fa-arrow-right text-white"/>
+                                    </div>
+                                </div>
+                                <canvas t-ref="chart_activities"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="col m-0 p-0">
+                        <div class="shadow-sm border m-2 p-4 bg-white">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h3 class="text-primary fw-bold">
+                                    Leads by Medium
+                                </h3>
+                                <div class="px-3 py-2 bg-primary cursor-pointer">
+                                    <span class="fa fa-arrow-right text-white"/>
+                                </div>
+                            </div>
+                            <canvas t-ref="chart_leads_by_medium"/>
+                        </div>
+                    </div>
+                    <div class="col m-0 p-0">
+                        <div class="shadow-sm border m-2 p-4 bg-white">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h3 class="text-primary fw-bold">
+                                    Leads by Campaign
+                                </h3>
+                                <div class="px-3 py-2 bg-primary cursor-pointer">
+                                    <span class="fa fa-arrow-right text-white"/>
+                                </div>
+                            </div>
+                            <canvas t-ref="chart_leads_by_campaign"/>
+                        </div>
+                    </div>
+                    <div class="col m-0 p-0">
+                        <div class="shadow-sm border m-2 p-4 bg-white">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h3 class="text-primary fw-bold">
+                                    Leads by Month
+                                </h3>
+                                <div class="px-3 py-2 bg-primary cursor-pointer">
+                                    <span class="fa fa-arrow-right text-white"/>
+                                </div>
+                            </div>
+                            <table t-if="state.leadsMonth" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Month</th>
+                                        <th>Leads</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="state.leadsMonth" t-as="rec" t-key="rec_index">
+                                        <td>
+                                            <span t-esc="rec.month"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="rec.leads"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

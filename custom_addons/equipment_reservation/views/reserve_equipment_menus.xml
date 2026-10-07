@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="reserve_equipment_root" name="Equipment Reservation"/>
+    <menuitem id="reserve_equipment_menu" parent="equipment_reservation.reserve_equipment_root"
+              action="action_reserve_equipment"/>
+    <menuitem id="reserve_equipment_line_menu" parent="equipment_reservation.reserve_equipment_root"
+              action="action_reserve_equipment_line"
+    />
+
+</odoo>

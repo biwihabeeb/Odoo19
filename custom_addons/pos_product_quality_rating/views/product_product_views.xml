@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_product_form_view_field_quality_rating" model="ir.ui.view">
+        <field name="name">product_product.form.view.field.quality.rating</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_general']" position="inside">
+                <field name="quality_rating"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

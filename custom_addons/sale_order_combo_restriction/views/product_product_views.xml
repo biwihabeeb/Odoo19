@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_product_form_view_field_restricted_product_ids" model="ir.ui.view">
+        <field name="name">product.product.form.view.field.restricted.product.ids</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_general']" position="inside">
+                <field name="restricted_combo_ids" widget="many2many_tags" domain="[('id','!=',id)]"/>
+<!--                domain="[('id', '!=','restricted_id')]"-->
+<!--                domain="[('restricted_id','!=','product_id')]"-->
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="trending_books_carousel_snippet" inherit_id="website.snippets" name="Trending Books Snippet">
+        <xpath expr="//snippets[@id='snippet_groups']" position="inside">
+            <t t-snippet="library_mgmt.trending_books_carousel_snippet_highlight"/>
+        </xpath>
+        <xpath expr="//snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="library_mgmt.trending_books_carousel_snippet_highlight"/>
+        </xpath>
+    </template>
+</odoo>

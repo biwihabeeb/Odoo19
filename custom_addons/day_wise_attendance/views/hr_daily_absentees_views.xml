@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_hr_daily_abbsentees" model="ir.actions.act_window">
+        <field name="name">Day-wise Absentees</field>
+        <field name="res_model">hr.daily.absentees</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="hr_daily_absentees_list_view" model="ir.ui.view">
+        <field name="name">hr.daily.absentees.list.view</field>
+        <field name="model">hr.daily.absentees</field>
+        <field name="arch" type="xml">
+            <list default_group_by="working_day:day">
+                <field name="employee_id"/>
+                <field name="working_day"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="search_view_daily_absentees_with_default_group" model="ir.ui.view">
+        <field name="name">search.view.daily.absentees.with.default.group</field>
+        <field name="model">hr.daily.absentees</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="working_day"/>
+                <group>
+                    <filter name="groupby_working_day" context="{'group_by' : 'working_day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <menuitem id="hr_attendance_daily_absentees_menu"
+              name="Day-wise Absentees"
+              parent="hr_attendance.menu_hr_attendance_overview"
+              action="action_hr_daily_abbsentees"
+    />
+
+
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="example_tag_list_view" model="ir.ui.view">
+        <field name="name">Example list view</field>
+        <field name="model">example.tag</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+
+
+                <field name="color" widget="color_picker"/>
+                <field name="name" width="85px"/>
+            </list>
+        </field>
+
+
+    </record>
+</odoo>

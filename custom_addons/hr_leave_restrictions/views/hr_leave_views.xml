@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="force_approval_leave_boolean_field_view" model="ir.ui.view">
+        <field name="name">force.approval.leave.boolean.field.view</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="force_approval"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

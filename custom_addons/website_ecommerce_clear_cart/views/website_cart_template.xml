@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="website_sale_cart_clear_button" inherit_id="website_sale.cart">
+        <xpath expr="//div[@class='col']" position="inside">
+            <form action="/shop/clear_cart" method="post">
+                <t t-log="'CURRENT: 'current_order"/>
+                <button type="submit" class="btn btn-primary" t-if="request.cart.id != False">Clear Cart</button>
+            </form>
+        </xpath>
+    </template>
+</odoo>

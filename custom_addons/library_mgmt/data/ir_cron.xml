@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ir_cron_due_reminder" model="ir.cron">
+        <field name="name">Library Book Return Reminder</field>
+        <field name="model_id" ref="library_mgmt.model_library_checkouts"/>
+        <field name="state">code</field>
+        <field name="code">
+            model.send_reminder()
+        </field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+    </record>
+    <record id="ir_cron_overdue_notice" model="ir.cron">
+        <field name="name">Library Overdue Notice</field>
+        <field name="model_id" ref="library_mgmt.model_library_checkouts"/>
+        <field name="state">code</field>
+        <field name="code">
+            model.send_overdue_notice()
+        </field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+    </record>
+</odoo>

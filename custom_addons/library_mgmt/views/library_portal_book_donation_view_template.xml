@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_my_home_library_book_donations" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[@class='o_portal_category row g-2 mt-3']" position="inside">
+            <t t-set="portal_client_category_enable" t-value="True"/>
+
+        </xpath>
+        <div id="portal_client_category" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'library_mgmt/static/src/img/noun-book-1069597.svg'"/>
+                <t t-set="title">Book Contributions</t>
+                <t t-set="url" t-value="'/my/book_donations'"/>
+                <t t-set="text">View your Contributions to the Library here.</t>
+                <t t-set="config_card" t-value="True"/>
+            </t>
+        </div>
+    </template>
+    <template id="portal_my_book_donation_records" name="User Book Donations">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container">
+                    <div class="row">
+                        <h3>
+                            My Book Donations
+                        </h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <th>Reference ID</th>
+                                <th>Book Title</th>
+                                <th>Genre</th>
+                                <th>Author</th>
+                                <th>ISBN</th>
+                                <th>Publisher</th>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="records" t-as="rec">
+                                    <td>
+                                        <a t-attf-href="/my/book_donations/#{rec.id}"><span t-esc="rec.name"/></a>
+                                    </td>
+                                    <td>
+                                        <a t-attf-href="/my/book_donations/#{rec.id}"><span t-esc="rec.book_title"/></a>
+                                    </td>
+                                    <td>
+                                        <t t-if="rec.book_genre_ids">
+                                            <a t-attf-href="/my/book_donations/#{rec.id}">
+                                                <span t-esc="rec.book_genre_ids.mapped('name')[0]"/>
+                                            </a>
+                                        </t>
+
+                                    </td>
+                                    <td>
+                                        <a t-attf-href="/my/book_donations/#{rec.id}"><span t-esc="rec.book_author_id.name"/></a>
+                                    </td>
+                                    <td>
+                                        <a t-attf-href="/my/book_donations/#{rec.id}"><span t-esc="rec.book_isbn"/></a>
+                                    </td>
+                                    <td>
+                                        <a t-attf-href="/my/book_donations/#{rec.id}"><span t-esc="rec.book_publisher_id.name"/></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="portal_my_book_donation_record" name="Donated Book">
+<!--        <t t-call="website.layout">-->
+<!--            <div class="oe_structure">-->
+<!--                <div class="container">-->
+<!--                    <div class="row">-->
+<!--                        <h3>-->
+<!--                            Book Record-->
+<!--                        </h3>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </t>-->
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Donated Books</t>
+            </t>
+            <div class="oe_structure">
+                <div class="container">
+                    <div class="row">
+                        <h3>
+                           Donated Book Record
+                        </h3>
+                        <div class="col" style="display: inline-block">
+                            <p><b>Book Reference ID: </b>
+                                <span t-esc="record.name"/>
+                            </p>
+                            <p><b>Book Title: </b>
+                                <span t-esc="record.book_title"/>
+                            </p>
+                            <t t-if="record.book_genre_ids">
+                                <p>
+                                    <b>Genre:</b>
+                                    <span t-esc="record.book_genre_ids.mapped('name')[0]"/>
+                                </p>
+                            </t>
+                            <t t-if="record.book_author_id">
+                                <p>
+                                    <b>Author:</b>
+                                    <span t-esc="record.book_author_id.name"/>
+                                </p>
+                            </t>
+                            <p><b>ISBN: </b>
+                                <span t-esc="record.book_isbn"/>
+                            </p>
+                            <t t-if="record.book_publisher_id">
+                                <p>
+                                    <b>Publisher:</b>
+                                    <span t-esc="record.book_publisher_id.name"/>
+                                </p>
+                            </t>
+                        </div>
+
+
+<!--                            <span t-esc="record.book_cover"/>-->
+                        <div class="col" style="display: inline-block">
+                            <t t-if="record.book_cover">
+<!--                                <img t-field="record.book_cover" width="200" height="300"/>-->
+                                <span t-field="record.book_cover" t-options="{'widget': 'image'}"/>
+                            </t>
+                        </div>
+<!--                        class="s_text_block o_editable o_dirty"-->
+<!--                        , 'width': '200', 'height': '300'-->
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

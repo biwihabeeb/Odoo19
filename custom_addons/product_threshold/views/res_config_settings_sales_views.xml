@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_res_config_settings_form_product_threshold_field_view" model="ir.ui.view">
+        <field name="name">sale.res.config.settings.form.product.threshold.field.view</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='catalog_setting_container']" position="inside">
+                <setting string="Product Threshold">
+                    <field name="product_threshold"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

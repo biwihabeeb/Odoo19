@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_order_form_view_button_pay_at_counter" model="ir.ui.view">
+        <field name="name">sale.order.form.view.button.pay.at.counter</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <button name="action_pay_at_counter" string="Pay at Counter" type="object" class="btn btn-primary" invisible="state != 'sale'"/>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[@name='other_information']/group/group[@name='sales_person']" position="inside">
+                <field name="session_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="stock_picking_form_view_field_line_weight" model="ir.ui.view">
+        <field name="name">stock.picking.form.view.field.line.weight</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='operations']/field[@name='move_ids']/list" postition="inside">
+                <field name="line_weight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

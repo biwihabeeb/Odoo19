@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_employee_loan" model="ir.actions.act_window">
+        <field name="name">Employee Loan</field>
+        <field name="res_model">employee.loan</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="employee_loan_view_list" model="ir.ui.view">
+        <field name="name">employee.loan.view.list</field>
+        <field name="model">employee.loan</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="loan_amount"/>
+                <field name="installment_count"/>
+                <field name="start_date"/>
+                <field name="total_payable"/>
+                <field name="state"/>
+                <!--                <field name=""/>-->
+            </list>
+        </field>
+    </record>
+    <record id="employee_loan_line_view_form" model="ir.ui.view">
+        <field name="name">employee.loan.line.view.form</field>
+        <field name="model">employee.loan</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,approved,ongoing,paid"/>
+                    <button name="action_approve" type="object" class="btn-primary" string="Approve" invisible="state in 'approved ongoing paid'"/>
+                    <button name="generate_installments" type="object" class="btn-primary" string="Generate Installments" invisible="state != 'approved'"/>
+                    <button name="action_loan_payment" type="object" class="btn-primary" string="Pay" invisible="state != 'ongoing'"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_loan_lines" type="object" class="oe_stat_button" string="Installment(s)"
+                                icon="fa-dollar" invisible="loan_lines_count == 0">
+                            <field name="loan_lines_count" widget="statinfo" string="Installment(s)"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group name="partner_details">
+                            <field name="name"/>
+                            <field name="employee_id"/>
+                        </group>
+
+<!--                        <field name="state"/>-->
+                        <group name="loan_details">
+                            <field name="loan_amount"/>
+                            <field name="installment_count"/>
+                            <field name="start_date"/>
+                            <field name="installment_amount"/>
+                            <field name="total_payable"/>
+                            <field name="loan_lines_count"/>
+                            <field name="paid_amount"/>
+                            <field name="balance_amount"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Loan Lines">
+                            <field name="loan_line_ids">
+                                <list editable="bottom">
+                                    <field name="loan_id"/>
+                                    <field name="amount"/>
+                                    <field name="date"/>
+                                    <field name="paid"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+</odoo>

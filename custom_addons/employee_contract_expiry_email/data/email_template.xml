@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="email_template_employee_contract_expiry_reminder" model="mail.template">
+        <field name="name">HR: Employee Contract Expiry Reminder</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="subject">Contract Expiring for {{ object.name }}</field>
+        <field name="email_to">{{ object.parent_id.work_email }}</field>
+        <field name="body_html" type="html">
+            <p>Hi <t t-esc="object.parent_id.name"/>,</p>
+            <p>This is your reminder that employee named <b><span t-esc="object.name"/></b>, has expiring contract.</p>
+            <p>Contract start date: <span t-esc="object.contract_date_start"/></p>
+            <p>Contract end date: <span t-esc="object.contract_date_end"/></p>
+            <p>Kindly conduct a follow-up and do what is required.</p>
+        </field>
+    </record>
+</odoo>

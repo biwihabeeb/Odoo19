@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="library_book_suggestions" model="ir.ui.view">
+        <field name="name">library.book.suggestions.wizard.view</field>
+        <field name="model">library.book.suggestions</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="suggestion_ids" >
+                    <list create="false" edit="false">
+                        <field name="book_title"/>
+                        <field name="book_author_id"/>
+                        <field name="book_genre_ids" widget="many2many_tags"/>
+                        <field name="book_borrow_count"/>
+                    </list>
+                </field>
+                <footer>
+                    <button name="add_books" type="object" string="Add" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

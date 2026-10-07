@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="library_mgmt_assistant_checkouts_rule" model="ir.rule">
+            <field name="name">Library Assistant: access only the owned documents</field>
+            <field name="model_id" ref="model_library_checkouts"/>
+                <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('library_mgmt.group_library_assistant'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
+</odoo>

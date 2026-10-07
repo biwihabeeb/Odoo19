@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sale_config_settings_view_customer_tag_ids" model="ir.ui.view">
+            <field name="name">sale.config.settings.view.customer.tag.ids</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//block[@name='catalog_setting_container']" position="inside">
+                    <setting string="Customer Filtering">
+                        <field name="customer_tag_ids" widget="many2many_tags"/>
+                    </setting>
+                </xpath>
+            </field>
+        </record>
+        <record id="purchase_config_settings_view_vendor_tag_ids" model="ir.ui.view">
+            <field name="name">purchase.config.settings.view.vendor.tag.ids</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+            <field name="arch" type="xml">
+                <xpath expr="//block[@name='purchase_setting_container']" position="inside">
+                    <setting string="Vendor Filtering">
+                        <field name="vendor_tag_ids" widget="many2many_tags"/>
+
+                    </setting>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

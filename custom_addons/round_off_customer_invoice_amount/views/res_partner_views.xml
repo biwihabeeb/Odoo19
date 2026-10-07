@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_partner_form_view_button_round_off" model="ir.ui.view">
+        <field name="name">res.partner.form.view.button.round.off</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="before">
+                <header>
+                    <button name="round_off_invoice_amount" string="Round off" type="object" class="btn btn-primary"/>
+                </header>
+
+                <!--                <header>-->
+                <!--                </header>-->
+            </xpath>
+        </field>
+    </record>
+</odoo>

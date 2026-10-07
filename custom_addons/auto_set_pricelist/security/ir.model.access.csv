@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_country_based_pricelist,access.country.based.pricelist,model_country_based_pricelist,base.group_user,1,1,1,1

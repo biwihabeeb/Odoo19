@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_fleet_review_root" name="Fleet App"/>
+
+    <menuitem id="menu_fleet_service" name="Fleet" parent="menu_fleet_review_root"/>
+    <menuitem id="menu_fleet_service_configuration" name="Configuration" parent="menu_fleet_review_root"/>
+
+    <menuitem id="menu_fleet_service_order" name="Order" parent="menu_fleet_service" action="action_fleet_service_order"/>
+    <menuitem id="menu_fleet_service_order_part" name="Parts" parent="menu_fleet_service" action="action_fleet_service_order_part"/>
+    <menuitem id="menu_fleet_service_order_checklist" name="Checklist" parent="menu_fleet_service" action="action_fleet_service_order_checklist"/>
+
+
+
+
+
+</odoo>

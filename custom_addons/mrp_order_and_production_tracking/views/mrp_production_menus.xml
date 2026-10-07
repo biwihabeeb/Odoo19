@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_mrp_order_tracking_root" name="MRP Order and Production Tracking"/>
+
+    <menuitem id="menu_mrp_producion_ext" name="Production" parent="menu_mrp_order_tracking_root" action="action_mrp_production_ext"/>
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('product-img')]" position="before">
+            <div t-if="props.product.quality_rating">
+                <div class="product-rating">
+                    <t t-if="props.product.quality_rating == '1'">
+                        <span><icon class="fa fa-star"/></span>
+                    </t>
+                    <t t-if="props.product.quality_rating == '2'">
+                        <t t-foreach="[1,2]" t-as="star" t-key="star">
+                            <span><icon class="fa fa-star"/></span>
+                        </t>
+                    </t>
+                    <t t-if="props.product.quality_rating == '3'">
+                        <t t-foreach="[1,2,3]" t-as="star" t-key="star">
+                            <span><icon class="fa fa-star"/></span>
+                        </t>
+                    </t>
+                    <t t-if="props.product.quality_rating == '4'">
+                        <t t-foreach="[1,2,3,4]" t-as="star" t-key="star">
+                            <span><icon class="fa fa-star"/></span>
+                        </t>
+                    </t>
+                    <t t-if="props.product.quality_rating == '5'">
+                        <t t-foreach="[1,2,3,4,5]" t-as="star" t-key="star">
+                            <span><icon class="fa fa-star"/></span>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </t>
+
+
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//ul[hasclass('info-list')]" position="inside">
+            <t t-log="'RATING: ',typeof props.line.product_id.quality_rating"/>
+            <t t-if="props.line.product_id.quality_rating">
+                <div class="product-rating">
+                    <t t-if="props.line.product_id.quality_rating == '1'">
+                        <span><icon class="fa fa-star"/></span>
+                    </t>
+                    <t t-if="props.line.product_id.quality_rating == '2'">
+                        <t t-foreach="[1,2]" t-as="star" t-key="star">
+                            <span><icon class="fa fa-star"/></span>
+                        </t>
+                    </t>
+                    <t t-if="props.line.product_id.quality_rating == '3'">
+                        <t t-foreach="[1,2,3]" t-as="star" t-key="star">
+                            <span><icon class="fa fa-star"/></span>
+                        </t>
+                    </t>
+                    <t t-if="props.line.product_id.quality_rating == '4'">
+                        <t t-foreach="[1,2,3,4]" t-as="star" t-key="star">
+                            <span><icon class="fa fa-star"/></span>
+                        </t>
+                    </t>
+                    <t t-if="props.line.product_id.quality_rating == '5'">
+                        <t t-foreach="[1,2,3,4,5]" t-as="star" t-key="star">
+                            <span><icon class="fa fa-star"/></span>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </xpath>
+    </t>
+</templates>

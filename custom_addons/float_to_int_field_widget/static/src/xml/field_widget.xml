@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="float_to_int_field_widget.FloatToIntWidget">
+        <input type="number" class="o_input flex-shrink-1" t-ref="input_field" style="-moz-appearance: textfield; appearance: textfield;"/>
+    </t>
+</templates>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_variant_form_view_field_product_brand" model="ir.ui.view">
+        <field name="name">product.variant.form.view.field.product.brand</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_general']" position="inside">
+                <field name="product_master_type"/>
+                <field name="product_brand" invisible="product_master_type != 'brand'"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_product_list_view_field_product_brand" model="ir.ui.view">
+        <field name="name">product.product.list.view.field.product.brand</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="inside">
+                <field name="product_brand" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_sales_management_country_based_pricelist" model="ir.actions.act_window">
+        <field name="name">Country --> Pricelist</field>
+        <field name="res_model">country.based.pricelist</field>
+<!--        <field name="view_type">list</field>-->
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="country_based_pricelist_view_list" model="ir.ui.view">
+        <field name="name">country.based.pricelist.view.list</field>
+        <field name="model">country.based.pricelist</field>
+        <field name="arch" type="xml">
+            <list editable="bottom" create="1" edit="1">
+                <field name="country_id"/>
+                <field name="pricelist_id"/>
+            </list>
+        </field>
+    </record>
+
+    <menuitem id="menu_sales_management_country_based_pricelist" name="Local Pricelist" parent="sale.menu_sale_config" action="action_sales_management_country_based_pricelist"/>
+
+
+</odoo>

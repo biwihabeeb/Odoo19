@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_library_mgmt_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="context">{'module' : 'library_mgmt', 'bin_size': False}</field>
+
+        <field name="view_mode">form</field>
+    </record>
+
+    <data>
+        <record id="library_mgmt_config_settings_view_form" model="ir.ui.view">
+            <field name="name">library.config.settings.view.form</field>
+            <field name="model">res.config.settings</field>
+<!--            <field name="priority" eval="90"/>-->
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <app data-string="Library Management" id="libray_mgmt_app_settings" string="Library Management" name="library_mgmt">
+                        <block title="Library Policies" id="library_policies">
+                            <setting string="Days Remaining">
+                                <div class="text-muted content-group mt16">
+                                    <span>Send an alert </span>
+                                    <field name="reminder_days" class="text-center" style="width: 10%; min-width: 4rem;" />
+                                    <span> days before book return due</span>
+                                </div>
+                            </setting>
+                            <setting string="Max days to borrow">
+                                <div class="text-muted content-group mt16">
+                                    <span>Book shall be returned within </span>
+                                    <field name="max_borrow_days" class="text-center" style="width: 10%; min-width: 4rem;" />
+                                    <span> of the borrowed date</span>
+                                </div>
+                            </setting>
+                            <setting string="Penalty per hour">
+                                <div class="text-muted content-group mt16">
+                                    <span>Members must pay $</span>
+                                    <field name="penalty_per_hour" class="text-center" style="width: 10%; min-width: 4rem;" />
+                                    <span> per each hour the book is overdue</span>
+                                </div>
+                            </setting>
+                            <setting string="Max Number of Books">
+                                <div class="text-muted content-group mt16">
+                                    <span>Maximum number of books a member can take per checkout </span>
+                                    <strong><field name="max_borrow_number" class="text-center" style="width: 10%; min-width: 4rem;" /></strong>
+                                </div>
+                            </setting>
+                            <setting string="Max Number of Late Returns Permissible">
+                                <div class="text-muted content-group mt16">
+                                    <span>A Member will be blocked ate checkout if he exceeds the maximum permissible late return count </span>
+                                    <strong><field name="max_allowed_late_returns" class="text-center" style="width: 10%; min-width: 4rem;" /></strong>
+                                </div>
+                            </setting>
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

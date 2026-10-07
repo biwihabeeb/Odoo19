@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mrp_production_form_view_button_suggest_alternatives" model="ir.ui.view">
+        <field name="name">mrp.production.form.view.button.suggest.alternatives</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_suggest_alternate" class="btn btn-primary" type="object" string="Suggest Alternates"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

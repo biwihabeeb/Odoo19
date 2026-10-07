@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo noupdate="1">
+
+<!--    Gneres-->
+    <record id="genre_fiction" model="library.genres">
+        <field name="name">Fiction</field>
+    </record>
+    <record id="genre_nonfiction" model="library.genres">
+        <field name="name">Non-Fiction</field>
+    </record>
+    <record id="genre_thriller" model="library.genres">
+        <field name="name">Thriller</field>
+    </record>
+    <record id="genre_novel" model="library.genres">
+        <field name="name">Novel</field>
+    </record>
+    <record id="genre_mystery" model="library.genres">
+        <field name="name">Mystery</field>
+    </record>
+    <record id="genre_biography" model="library.genres">
+        <field name="name">Biography</field>
+    </record>
+    <record id="genre_educational" model="library.genres">
+        <field name="name">Educational</field>
+    </record>
+
+<!--    Authors-->
+    <record id="author1" model="library.authors">
+        <field name="name">William Shakespeare</field>
+    </record>
+    <record id="author2" model="library.authors">
+        <field name="name">Jane Austen</field>
+    </record>
+    <record id="author3" model="library.authors">
+        <field name="name">J. K. Rowling</field>
+    </record>
+    <record id="author4" model="library.authors">
+        <field name="name">Charles Dickens</field>
+    </record>
+    <record id="author5" model="library.authors">
+        <field name="name">Arundati Roy</field>
+    </record>
+    <record id="author6" model="library.authors">
+        <field name="name">Oscar Wilde</field>
+    </record>
+    <record id="author7" model="library.authors">
+        <field name="name">Dan Brown</field>
+    </record>
+
+<!--    Publishers-->
+    <record id="publish1" model="library.publishers">
+        <field name="name">Bloomberg Publications</field>
+    </record>
+    <record id="publish2" model="library.publishers">
+        <field name="name">Alexandria Publications</field>
+    </record>
+
+<!--    Books-->
+    <record id="book2" model="library.books">
+        <field name="book_title">Inferno</field>
+        <field name="book_isbn">9780385537858</field>
+        <field name="book_author_id" ref="library_mgmt.author7"/>
+        <field name="book_publisher_id" ref="library_mgmt.publish1"/>
+        <field name="book_genre_ids" eval="[Command.link(ref('library_mgmt.genre_thriller'))]"/>
+    </record>
+    <record id="book3" model="library.books">
+        <field name="book_title">The Da Vinci Code</field>
+        <field name="book_isbn">9780385504201</field>
+        <field name="book_author_id" ref="library_mgmt.author7"/>
+        <field name="book_publisher_id" ref="library_mgmt.publish1"/>
+        <field name="book_genre_ids" eval="[Command.link(ref('library_mgmt.genre_thriller')),Command.link(ref('library_mgmt.genre_mystery'))]"/>
+    </record>
+<!--    <record id="book2" model="library.books">-->
+<!--        <field name="book_title">Inferno</field>-->
+<!--        <field name="book_isbn">9780385537858</field>-->
+<!--        <field name="book_author_id" ref="library_mgmt.author7"/>-->
+<!--        <field name="book_publisher_id" ref="library_mgmt.publish1"/>-->
+<!--        <field name="book_genre_ids" eval="[Command.link(ref('library_mgmt.genre_thriller'))]"/>-->
+<!--    </record>-->
+<!--    <record id="book2" model="library.books">-->
+<!--        <field name="book_title">Inferno</field>-->
+<!--        <field name="book_isbn">9780385537858</field>-->
+<!--        <field name="book_author_id" ref="library_mgmt.author7"/>-->
+<!--        <field name="book_publisher_id" ref="library_mgmt.publish1"/>-->
+<!--        <field name="book_genre_ids" eval="[Command.link(ref('library_mgmt.genre_thriller'))]"/>-->
+<!--    </record>-->
+<!--    <record id="book2" model="library.books">-->
+<!--        <field name="book_title">Inferno</field>-->
+<!--        <field name="book_isbn">9780385537858</field>-->
+<!--        <field name="book_author_id" ref="library_mgmt.author7"/>-->
+<!--        <field name="book_publisher_id" ref="library_mgmt.publish1"/>-->
+<!--        <field name="book_genre_ids" eval="[Command.link(ref('library_mgmt.genre_thriller'))]"/>-->
+<!--    </record>-->
+<!--    <record id="book2" model="library.books">-->
+<!--        <field name="book_title">Inferno</field>-->
+<!--        <field name="book_isbn">9780385537858</field>-->
+<!--        <field name="book_author_id" ref="library_mgmt.author7"/>-->
+<!--        <field name="book_publisher_id" ref="library_mgmt.publish1"/>-->
+<!--        <field name="book_genre_ids" eval="[Command.link(ref('library_mgmt.genre_thriller'))]"/>-->
+<!--    </record>-->
+<!--    <record id="book2" model="library.books">-->
+<!--        <field name="book_title">Inferno</field>-->
+<!--        <field name="book_isbn">9780385537858</field>-->
+<!--        <field name="book_author_id" ref="library_mgmt.author7"/>-->
+<!--        <field name="book_publisher_id" ref="library_mgmt.publish1"/>-->
+<!--        <field name="book_genre_ids" eval="[Command.link(ref('library_mgmt.genre_thriller'))]"/>-->
+<!--    </record>-->
+<!--    <record id="book2" model="library.books">-->
+<!--        <field name="book_title">Inferno</field>-->
+<!--        <field name="book_isbn">9780385537858</field>-->
+<!--        <field name="book_author_id" ref="library_mgmt.author7"/>-->
+<!--        <field name="book_publisher_id" ref="library_mgmt.publish1"/>-->
+<!--        <field name="book_genre_ids" eval="[Command.link(ref('library_mgmt.genre_thriller'))]"/>-->
+<!--    </record>-->
+<!--    <record id="book2" model="library.books">-->
+<!--        <field name="book_title">Inferno</field>-->
+<!--        <field name="book_isbn">9780385537858</field>-->
+<!--        <field name="book_author_id" ref="library_mgmt.author7"/>-->
+<!--        <field name="book_publisher_id" ref="library_mgmt.publish1"/>-->
+<!--        <field name="book_genre_ids" eval="[Command.link(ref('library_mgmt.genre_thriller'))]"/>-->
+<!--    </record>-->
+
+
+</odoo>

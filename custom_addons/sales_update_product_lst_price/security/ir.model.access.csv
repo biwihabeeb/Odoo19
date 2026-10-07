@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bulk_price_update,access.bulk.price.update,model_bulk_price_update,base.group_user,1,1,1,1
+access_price_update_line,access.price.update.line,model_price_update_line,base.group_user,1,1,1,1
+access_updated_price_summary,access.updated.price.summary,model_updated_price_summary,base.group_user,1,1,1,1

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="email_template_book_return_reminder" model="mail.template">
+        <field name="name">E-mail Template: Reminder to Return Borrowed Books</field>
+        <field name="model_id" ref="library_mgmt.model_library_checkouts"/>
+        <field name="subject">Books Due</field>
+        <field name="email_to">{{ object.checkout_member_email }}</field>
+        <field name="body_html" type="html">
+            <p>Hi  <t t-out="object.checkout_member_name_id.name"/>,</p>
+            <p>This is your reminder to return books that are due on <b><t t-out="object.checkout_return_due"/></b></p>
+            <p>Following book(s) need to be returned on the expected date:</p>
+            <ul>
+                <t t-foreach="object.checkout_lines_ids" t-as="rec">
+                <li>
+                    <t t-out="rec.book_title"/>
+                </li>
+                </t>
+            </ul>
+            <p>Sincerely,</p>
+            <p>Mitchell Admin</p>
+        </field>
+    </record>
+
+    <record id="email_template_book_return_overdue" model="mail.template">
+        <field name="name">Email Template: Notice for Overdue books</field>
+        <field name="model_id" ref="library_mgmt.model_library_checkouts"/>
+        <field name="subject">Book Return: Overdue</field>
+        <field name="email_to">{{ object.checkout_member_email }}</field>
+        <field name="body_html" type="html">
+            <p>Hi, <t t-out="object.checkout_member_name_id.name"/> </p>
+            <p>You have books overdue that needs to be returned. You were expected to return the books by <b><t t-out="object.checkout_return_due"/></b>.</p>
+            <p> You shall return the books as soon as possible, as you will have to pay a fine for every hour the book return is delayed.</p>
+            <p>Following book(s) need to be returned:</p>
+            <ul>
+                <t t-foreach="object.checkout_lines_ids" t-as="rec">
+                    <li>
+                        <t t-out="rec.book_title"/>
+                    </li>
+                </t>
+            </ul>
+            <p>Sincerely,</p>
+            <p>Mitchell Admin</p>
+        </field>
+    </record>
+
+</odoo>

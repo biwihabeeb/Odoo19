@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="library_book_borrow_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>Library Management Report</h2>
+                    <t t-if="member">
+                        <p>Member:
+                            <span t-esc="member"/>
+                        </p>
+                    </t>
+                    <t t-if="book">
+                        <p>Book title:
+                            <span t-esc="book"/>
+                        </p>
+                    </t>
+                    <t t-if="author">
+                        <p>Author:
+                            <span t-esc="author"/>
+                        </p>
+                    </t>
+                    <t t-if="publisher">
+                        <p>Publisher:
+                            <span t-esc="publisher"/>
+                        </p>
+                    </t>
+                    <t t-if="genre">
+                        <p>Genre:
+                            <span t-esc="genre"/>
+                        </p>
+                    </t>
+                    <t t-if="checkout">
+                        <p>Checkout Date:
+                            <span t-esc="checkout"/>
+                        </p>
+                    </t>
+                    <t t-if="return">
+                        <p>Returned Date:
+                            <span t-esc="return"/>
+                        </p>
+                    </t>
+                    <table class="table table-sm">
+                        <thead>
+                            <th>Reference ID</th>
+                            <th t-if="not member">Member Name</th>
+                            <th t-if="not book">Book title</th>
+                            <th t-if="not author">Author</th>
+                            <th>Language</th>
+                            <th t-if="not publisher">Publisher</th>
+                            <th t-if="not genre">Genre</th>
+                            <th t-if="not checkout">Checkout date</th>
+                            <th t-if="not return">Return date</th>
+
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="report" t-as="rec">
+                                <td>
+                                    <span t-esc="rec.get('reference_id')"/>
+                                </td>
+                                <td t-if="not member">
+                                    <span t-esc="rec.get('member_name')"/>
+                                </td>
+                                <td t-if="not book">
+                                    <span t-esc="rec.get('title')"/>
+                                </td>
+                                <td t-if="not author">
+                                    <span t-esc="rec.get('author')"/>
+                                </td>
+                                <td>
+                                    <span t-esc="rec.get('language')"/>
+                                </td>
+                                <td t-if="not publisher">
+                                    <span t-esc="rec.get('publisher')"/>
+                                </td>
+                                <td t-if="not genre">
+                                    <span t-esc="rec.get('genre')"/>
+                                </td>
+                                <td t-if="not checkout">
+                                    <span t-esc="rec.get('checkout_date')"/>
+                                </td>
+                                <td t-if="not returned">
+                                    <span t-esc="rec.get('checkout_returned')"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

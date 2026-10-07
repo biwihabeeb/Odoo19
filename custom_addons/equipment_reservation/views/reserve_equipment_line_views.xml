@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_reserve_equipment_line" model="ir.actions.act_window">
+        <field name="name">Equipment Reservation Lines</field>
+        <field name="res_model">reserve.equipment.line</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="reserve_equipment_line_view_list" model="ir.ui.view">
+        <field name="name">reserve.equipment.view.list</field>
+        <field name="model">reserve.equipment.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="reservation_id"/>
+                <field name="equipment_id"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="weather_popup_icon" owl="1">
+        <t t-set="data" t-value="state.weatherData"/>
+        <Dropdown>
+            <button class="o-dropdown dropdown-toggle dropdown">
+                <i class="fa fa-cloud" title="Weather Notification" style="cursor: pointer;"/>
+            </button>
+            <t t-set-slot="content">
+                <t t-if="Object.keys(data) != 0" t-set-slot="content">
+                    <DropdownItem>
+                        <div id="weather_popup" class="card h-100" tabindex="-1" style="min-width: 280px; max-width: 320px; border: none; background: #71b5c9; font-family: inherit;">
+                            <div class="card-title" style="padding: 15px; margin-bottom: 0;">
+                                <h5 style="color: #ffffff; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; margin: 0; text-align: center;">
+                                    <i class="fa fa-cloud"/>
+                                    WEATHER NOTIFICATION
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: #4a5568; border-bottom: 1px dashed #e2e8f0; padding-bottom: 8px;">
+                                    <b><i class="fa fa-globe"/> Timezone</b> <span t-esc="data.timezone"/>
+                                </p>
+                                <p style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: #4a5568; border-bottom: 1px dashed #e2e8f0; padding-bottom: 8px;">
+                                    <b><i class="fa fa-map-marker"/> Region</b> <span t-esc="data.location[0]"/>
+                                </p>
+                                <p style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: #4a5568; border-bottom: 1px dashed #e2e8f0; padding-bottom: 8px;">
+                                    <b><i class="fa fa-thermometer"/> Temperature</b>
+                                    <div style="display: block; border: #000000;">
+                                        <span t-esc="data.temp_c"/> &#8451; / <span t-esc="data.temp_f"/> &#8457;
+                                    </div>
+                                </p>
+                                <p style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; color: #4a5568; border-bottom: 1px dashed #e2e8f0; padding-bottom: 8px;">
+                                    <b>Condition</b> <span t-esc="data.condition"/>
+                                </p>
+                            </div>
+                        </div>
+                    </DropdownItem>
+                </t>
+                <t t-else="">
+                    <DropdownItem>
+                        <div class="card h-100">
+                            <div class="card-title">
+                                <h5><i>No Weather Updates</i></h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="muted-text"><i>Try changing the geographical region under the General Settings</i></p>
+                            </div>
+                        </div>
+                    </DropdownItem>
+                </t>
+            </t>
+        </Dropdown>
+    </t>
+</templates>

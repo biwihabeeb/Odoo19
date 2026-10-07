@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_sale_merge_draft_quotations"  model="ir.actions.server">
+        <field name="name">Merge Draft SO Quotations</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">list</field>
+        <field name="code">
+            action = records.with_context(hide_default_template=True).action_merge_draft_so()
+        </field>
+    </record>
+</odoo>

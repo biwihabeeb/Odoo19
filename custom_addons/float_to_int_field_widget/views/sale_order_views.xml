@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_order_form_view_field_float_to_int" model="ir.ui.view">
+        <field name="name">sale.order.form.view.field.float.to.int</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='order_details']" position="inside">
+                <field name="float_to_int" widget="float_to_int"/>
+            </xpath>
+<!--            <xpath expr="//notebook/page[@name='order_lines']/field[@name='order_line']/list/field[@name='product_uom_qty']" position="attributes">-->
+<!--                <attribute name="widget">float_to_int</attribute>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+</odoo>

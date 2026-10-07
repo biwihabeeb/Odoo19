@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="trending_books_carousel_snippet_highlight" name="Trending Books">
+        <section class="trending_books_snippet">
+            <div class="ref-arrival-content">
+            </div>
+            <div id="book_carousel">
+            </div>
+        </section>
+    </template>
+
+
+</odoo>

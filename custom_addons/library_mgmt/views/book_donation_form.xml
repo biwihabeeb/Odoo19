@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="book_donation_form_template" name="Book Donation Form">
+            <t t-call="website.layout">
+                <section class="container py-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-5">
+                            <div class="card">
+                                <div class="card-body p-4">
+                                    <h3 class="mb-4 text-center">Enter Book Details</h3>
+                                    <form action="/website/book_donate/create" enctype="multipart/form-data"
+                                          method="post">
+                                        <div class="mb-3">
+                                            <label class="form-label">Book Title</label>
+                                            <input type="text" name="book_title" required="required"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Author Name</label>
+                                            <input type="text" name="author_name" required="required"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">ISBN Code</label>
+                                            <input type="text" name="isbn" required="required"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Genres</label>
+                                            <select id="genres"
+                                                    class="form-control s_website_form_input"
+                                                    name="genres"
+                                                    multiple="multiple">
+                                                <t t-foreach="genres" t-as="genre">
+                                                    <option t-att-value="genre.id">
+                                                        <t t-esc="genre.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <!--                                            <div id="tag-pills-container" class="test_test">-->
+<!--                                        <div id="tag-pills-container" class="mb-3" data-type="many2many">-->
+<!--                                            <label class="form-label">Genres</label>-->
+<!--                                            <select id="genres"-->
+<!--                                                    class="form-control s_website_form_input"-->
+<!--                                                    name="tag"-->
+<!--                                                    multiple="multiple">-->
+<!--                                                <t t-foreach="genres" t-as="genre">-->
+<!--                                                    <option t-att-value="genre.id">-->
+<!--                                                        <t t-esc="genre.name"/>-->
+<!--                                                    </option>-->
+<!--                                                </t>-->
+<!--                                            </select>-->
+<!--                                            <select name="tag_ids" id="tag_ids"-->
+<!--                                                    class="form-control" multiple="multiple">-->
+<!--                                                <t t-foreach="request.env['crm.tag'].sudo().search([])" t-as="tag">-->
+<!--                                                    <option t-att-value="tag.id">-->
+<!--                                                        <t t-esc="tag.name"/>-->
+<!--                                                    </option>-->
+<!--                                                </t>-->
+<!--                                            </select>-->
+<!--                                            <div class="tag-pill-container col-6 form-control s_website_form_input"-->
+<!--                                                 style="display: flex; flex-wrap: wrap; gap: 6px;-->
+<!--                margin-top: 24px; border: 1px solid #212529; padding: 6px; border-radius: 8px; margin-left: 7px;">-->
+<!--                                                &lt;!&ndash; Pills for selected tags will appear here &ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                        <!--                                            <div id="tag-pills-container" class="tag-pill-container"/>-->
+                                        <!--                                             style="display: flex; flex-wrap: wrap; gap: 6px;-->
+                                        <!--                                                     margin-top: 24px; border: 1px solid #212529; padding: 6px; border-radius: 8px; margin-left: 7px;"-->
+
+                                        <!--                                            </div>-->
+                                        <div class="mb-3">
+                                            <label class="form-label">Publisher Name</label>
+                                            <input type="text" name="publisher" class="form-control"
+                                                   required="required"/>
+                                        </div>
+                                        <div class="mb-3 upload_form form-group">
+                                            <label class="col-form-label" for="attachment">Upload Book Image</label>
+                                            <input class="form-control" id="attachments" type="file"
+                                                   name="attachment"
+                                                   accept="image/*"/>
+                                        </div>
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="mb-3 d-grid">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+            <script type="text/javascript" src="/library_mgmt/static/src/js/multi_select_genres.js"/>
+
+        </template>
+
+        <template id="donation_success_template" name="Book record created">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h3>Your Donation Request is Successful! Thank You for your Contribution</h3>
+                </div>
+            </t>
+        </template>
+
+        <record id="menu_donate_book_form" model="website.menu">
+            <field name="name">Donate Books</field>
+            <field name="url">website/book_donate/form</field>
+            <field name="parent_id" ref="website.main_menu"/>
+
+        </record>
+    </data>
+</odoo>

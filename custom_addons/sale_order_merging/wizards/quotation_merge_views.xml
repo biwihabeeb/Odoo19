@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="merge_draft_quotations_form_view" model="ir.ui.view">
+        <field name="name">merge.draft.quotations.form.view</field>
+        <field name="model">quotation.merge</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="dominated_id" domain="[('id','in',quotation_ids)]"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_merge_quotations" type="object" string="Merge" class="btn btn-primary"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

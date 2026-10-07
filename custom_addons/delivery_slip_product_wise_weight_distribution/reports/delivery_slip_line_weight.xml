@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="delivery_slip_product_line_weight_split" inherit_id="stock.report_delivery_document">
+
+        <xpath expr="//table[@class='table table-sm table-borderless']/thead/tr" position="inside">
+            <th class="text-end">
+                <strong>Distributed Weight(in kg)</strong>
+            </th>
+        </xpath>
+        <xpath expr="//table[@class='table table-sm table-borderless']/tbody/tr" position="inside">
+            <td>
+                <span t-field="move.line_weight"/>
+                <span> kg</span>
+            </td>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_line_table']/thead/tr" position="inside">
+            <th name="th_sml_line_weight" class="text-end">Distributed Weight(in kg)</th>
+        </xpath>
+
+    </template>
+
+    <template id="delivery_slip_line_weight_has_serial_move_line_inherit_delivery" inherit_id="stock.stock_report_delivery_has_serial_move_line">
+        <xpath expr="//td[@name='move_line_lot_quantity']" position="after">
+            <td class="o_td_quantity text-end" t-if="move_line.move_id.line_weight">
+                <span t-field="move_line.move_id.line_weight"/>
+                <span> kg</span>
+            </td>
+        </xpath>
+    </template>
+
+    <template id="delivery_slip_line_weight_aggregated_move_lines_inherit_delivery" inherit_id="stock.stock_report_delivery_aggregated_move_lines">
+        <xpath expr="//td[@name='move_line_aggregated_quantity']" position="after">
+            <td class="o_td_quantity text-end">
+                <span t-esc="aggregated_lines[line]['move'].line_weight"/>
+                <span> kg</span>
+            </td>
+        </xpath>
+    </template>
+</odoo>
+
